@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/sitemap",
+      "destination": "https://bloggfeature.certifyied.workers.dev/adminApiBlog/api/sitemap.xml?projectId=70122bb7-065a-4ce3-8b29-b2f9b8416d7d",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "https://bloggfeature.certifyied.workers.dev/adminApiBlog/api/sitemap.xml?projectId=70122bb7-065a-4ce3-8b29-b2f9b8416d7d",
+      "permanent": true
+    }
+  ]
+}
