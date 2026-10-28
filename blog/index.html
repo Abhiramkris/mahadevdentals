@@ -226,34 +226,37 @@ class="hfeed site" id="page">
 			<div id="primary" class="content-area primary">
 					
 	<main id="main" class="site-main">
+        <a href="/blog" id="cf-back-link" style="display:none; margin-bottom: 24px; font-size: 15px; font-weight: 600; color: #10b981; text-decoration: none; align-items: center; gap: 6px;">&larr; Back to all articles</a>
         <div id="certifyied-blog-container" data-project-id="70122bb7-065a-4ce3-8b29-b2f9b8416d7d" data-limit="9" data-redirect-url="/blog"></div>
-        <div id="certifyied-blog-post" data-project-id="70122bb7-065a-4ce3-8b29-b2f9b8416d7d" style="display:none;"></div>
+        <div id="certifyied-blog-reader" data-project-id="70122bb7-065a-4ce3-8b29-b2f9b8416d7d" style="display:none;"></div>
         <script>
         document.addEventListener("DOMContentLoaded", function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const hasId = urlParams.has('id');
+            const pathParts = window.location.pathname.replace(/\/$/, '').split('/');
+            const lastPart = pathParts[pathParts.length - 1];
+            const isSinglePost = urlParams.has('id') || (lastPart && lastPart !== 'blog' && lastPart !== 'blogs' && lastPart !== 'index.html');
+            
             const container = document.getElementById('certifyied-blog-container');
-            const post = document.getElementById('certifyied-blog-post');
-            if (container && post) {
-                if (hasId) {
+            const reader = document.getElementById('certifyied-blog-reader');
+            const backLink = document.getElementById('cf-back-link');
+            const wpPagination = document.querySelector('.ast-pagination');
+            if (wpPagination) wpPagination.style.display = 'none';
+
+            if (container && reader) {
+                if (isSinglePost) {
                     container.style.display = 'none';
-                    post.style.display = 'block';
+                    reader.style.display = 'block';
+                    if (backLink) backLink.style.display = 'inline-flex';
                 } else {
                     container.style.display = 'block';
-                    post.style.display = 'none';
+                    reader.style.display = 'none';
+                    if (backLink) backLink.style.display = 'none';
                 }
             }
         });
         </script>
-        <script src="https://bloggfeature.certifyied.workers.dev/adminApiBlog/api/embed"></script>
-	</main><!-- #main -->
-			<div class='ast-pagination'><nav class="navigation pagination" aria-label="Post pagination">
-				<div class="nav-links"><span aria-current="page" class="page-numbers current">1</span>
-<a class="page-numbers" href="https://haremadhavdentalandcosmeticclinic.com/blog/page/2/">2</a>
-<span class="page-numbers dots">&hellip;</span>
-<a class="page-numbers" href="https://haremadhavdentalandcosmeticclinic.com/blog/page/9/">9</a>
-<a class="next page-numbers" href="https://haremadhavdentalandcosmeticclinic.com/blog/page/2/">Next <span class="ast-right-arrow" aria-hidden="true">&rarr;</span></a></div>
-		</nav></div>	</div><!-- #primary -->
+        <script src="https://bloggfeature.certifyied.workers.dev/blog-embed.js" async defer></script>
+	</main><!-- #main -->	</div><!-- #primary -->
 	</div> <!-- ast-container -->
 	</div><!-- #content -->
 <footer
